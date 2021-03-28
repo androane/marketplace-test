@@ -12,7 +12,7 @@ const getShoppingList = async () => {
 };
 
 function App() {
-  const shoppingList = getShoppingList();
+  const shoppingList = await getShoppingList();
   return (
     <div className="App">
       <header>
