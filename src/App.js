@@ -1,5 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+
+import { DataStore } from "@aws-amplify/datastore";
+import { ShoppingList } from "./models";
+
+await DataStore.save(
+  new ShoppingList({
+    name: "Lorem ipsum dolor sit amet",
+    description: "Lorem ipsum dolor sit amet"
+  })
+);
 
 function App() {
   return (
