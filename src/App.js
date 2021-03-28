@@ -10,7 +10,7 @@ const getShoppingList = async () => {
   console.log(models);
   models.forEach(m => {
     console.log("!");
-    console.log(m);
+    console.log(m.n);
   });
   return models;
 };
@@ -22,7 +22,7 @@ function App() {
       <header>
         <img src={logo} className="App-logo" alt="logo" />
         {shoppingList.map(l => (
-          <div>{l.name}</div>
+          <div>{l.n.name}</div>
         ))}
       </header>
     </div>
