@@ -8,11 +8,15 @@ import { ShoppingList } from "./models";
 const getShoppingList = async () => {
   const models = await DataStore.query(ShoppingList);
   console.log(models);
+  models.forEach(m => {
+    console.log("!");
+    console.log(m);
+  });
   return models;
 };
 
 function App() {
-  const shoppingList = await getShoppingList();
+  const shoppingList = getShoppingList();
   return (
     <div className="App">
       <header>
