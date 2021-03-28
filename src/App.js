@@ -1,28 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
 import { DataStore } from "@aws-amplify/datastore";
 import { ShoppingList } from "./models";
 
-const getShoppingList = async () => {
-  const models = await DataStore.query(ShoppingList);
-  console.log(models);
-  models.forEach(m => {
-    console.log("!");
-    console.log(m.n);
-  });
-  return models;
-};
-
 function App() {
-  const shoppingList = getShoppingList();
+  const [shoppingList, setShoppingList] = useState([]);
+
+  const getShoppingList = async () => {
+    const models = await DataStore.query(ShoppingList);
+    setShoppingList(models);
+  };
+
   return (
     <div className="App">
       <header>
         <img src={logo} className="App-logo" alt="logo" />
+        <button onClick={() => getShoppingList()}></button>
         {shoppingList.map(l => (
-          <div>{l.n.name}</div>
+          <div>{l.name}</div>
         ))}
       </header>
     </div>
