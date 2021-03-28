@@ -1,18 +1,24 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+
+import { DataStore } from '@aws-amplify/datastore';
+import { ShoppingList } from './models';
 
 function App() {
+  const models = await DataStore.query(ShoppingList);
+  console.log(models);
+
   return (
     <div className="App">
       <header>
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>We now have Auth!</h1>
+        {models.map(m => (<div>
+          {m.name}
+        </div>))}
       </header>
-      <AmplifySignOut />
     </div>
   );
 }
 
-export default withAuthenticator(App);
+export default App;
