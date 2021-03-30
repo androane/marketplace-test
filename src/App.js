@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <header>
         <img src={logo} className="App-logo" alt="logo" />
-        <button onClick={() => getShoppingList()}></button>
+        <button onClick={() => getShoppingList()}>Butonul lui Dorin</button>
         {shoppingList.map(l => (
           <div>{l.name}</div>
         ))}
